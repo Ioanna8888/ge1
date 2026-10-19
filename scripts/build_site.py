@@ -94,29 +94,3 @@ for i, cv in enumerate(cv_files):
   }
 </style>
 '''
-
-    # Προσθέτουμε CSS μία φορά, κατά προτίμηση πριν από το </head>
-    if re.search(r"</head\s*>", cv_html, flags=re.IGNORECASE):
-        cv_html = re.sub(r"</head\s*>", lambda m: style + "\n" + m.group(0),
-                         cv_html, count=1, flags=re.IGNORECASE)
-    else:
-        cv_html = style + cv_html
-
-    # Επάνω Webring αμέσως μετά το <body>
-    if re.search(r"<body(?:\s[^>]*)?>", cv_html, flags=re.IGNORECASE):
-        cv_html = re.sub(r"<body(?:\s[^>]*)?>",
-                         lambda m: m.group(0) + "\n" + navigation,
-                         cv_html, count=1, flags=re.IGNORECASE)
-    else:
-        cv_html = navigation + cv_html
-
-    # Κάτω Webring πριν το </body>
-    if re.search(r"</body\s*>", cv_html, flags=re.IGNORECASE):
-        cv_html = re.sub(r"</body\s*>", lambda m: navigation + "\n" + m.group(0),
-                         cv_html, count=1, flags=re.IGNORECASE)
-    else:
-        cv_html += navigation
-
-    page.write_text(cv_html, encoding="utf-8")
-
-print(f"Η ιστοσελίδα δημιουργήθηκε με {len(cv_files)} βιογραφικά και Webring στην κορυφή και στο τέλος.")
