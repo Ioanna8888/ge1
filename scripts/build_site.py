@@ -120,3 +120,6 @@ for i, cv in enumerate(cv_files):
     page.write_text(cv_html, encoding="utf-8")
 
 print(f"Η ιστοσελίδα δημιουργήθηκε με {len(cv_files)} βιογραφικά και δύο Webring ανά βιογραφικό.")
+print("Φάκελος βιογραφικών:", MEMBERS)
+print("Βιογραφικά που βρέθηκαν:", len(cv_files))
+print("Φάκελος εξόδου:", OUTPUT)
