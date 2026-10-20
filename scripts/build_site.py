@@ -123,3 +123,7 @@ print(f"Η ιστοσελίδα δημιουργήθηκε με {len(cv_files)} 
 print("Φάκελος βιογραφικών:", MEMBERS)
 print("Βιογραφικά που βρέθηκαν:", len(cv_files))
 print("Φάκελος εξόδου:", OUTPUT)
+for cv in cv_files:
+    generated = OUTPUT / "members" / cv.name
+    content = generated.read_text(encoding="utf-8")
+    print(cv.name, "→ Μενού:", "Προηγούμενο" in content)
